@@ -1,0 +1,12 @@
+
+curl ifconfig.io --interface 10.154.10.72
+
+ping 8.8.8.8 --interface 10.154.10.72
+
+sudo iptables -t nat -A POSTROUTING -j SNAT --to-source 10.154.10.71
+
+sudo crontab -e
+
+sudo iptables -t nat -L
+
+

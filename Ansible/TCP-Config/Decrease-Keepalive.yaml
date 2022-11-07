@@ -1,0 +1,217 @@
+---
+- name: add Public-Key
+  hosts: all
+  user: dev
+  become: yes
+  gather_facts: no
+  # become: yes
+  # ignore_errors: yes
+  tasks:
+############################# Replice /proc/sys/net/ipv4/tcp_keepalive_probes  
+
+#   - name: echo 5 secound to all of tcp_keepalive_time
+#     shell: printf '60' > /proc/sys/net/ipv4/tcp_keepalive_time
+
+# ############################## Replice /proc/sys/net/ipv4/tcp_keepalive_probes 
+
+#   - name: echo 5 secound to all of tcp_keepalive_probes
+#     shell: printf '6' > /proc/sys/net/ipv4/tcp_keepalive_probes
+
+# ############################## Replice /proc/sys/net/ipv4/tcp_keepalive_intvl
+
+#   - name: echo 1 secound to all of tcp_keepalive_intvl
+#     shell: printf '10' > /proc/sys/net/ipv4/tcp_keepalive_intvl
+
+
+# # #############################################################
+#   - name: /etc/sysctl.conf
+#     lineinfile:
+#        path: /etc/sysctl.conf
+#        line: 'net.ipv4.tcp_keepalive_time = 60'
+#        insertbefore: EOF
+
+#   - name: /etc/sysctl.conf
+#     lineinfile:
+#        path: /etc/sysctl.conf
+#        line: 'net.ipv4.tcp_keepalive_intvl = 10'
+#        insertbefore: EOF
+
+#   - name: /etc/sysctl.conf
+#     lineinfile:
+#        path: /etc/sysctl.conf
+#        line: 'net.ipv4.tcp_keepalive_probes = 6'
+#        insertbefore: EOF
+#####################################################################################
+####################################################################################
+
+  - name: echo 10 secound to all of tcp_keepalive_time
+    shell: printf '10' > /proc/sys/net/ipv4/tcp_keepalive_time
+
+# ############################## Replice /proc/sys/net/ipv4/tcp_keepalive_probes 
+
+  - name: echo 2 secound to all of tcp_keepalive_probes
+    shell: printf '2' > /proc/sys/net/ipv4/tcp_keepalive_probes
+
+############################## Replice /proc/sys/net/ipv4/tcp_keepalive_intvl
+
+  - name: echo 5 secound to all of tcp_keepalive_intvl
+    shell: printf '5' > /proc/sys/net/ipv4/tcp_keepalive_intvl
+
+
+# #############################################################
+  - name: /etc/sysctl.conf
+    lineinfile:
+       path: /etc/sysctl.conf
+       line: 'net.ipv4.tcp_keepalive_time = 10'
+       insertbefore: EOF
+  - name: /etc/sysctl.conf
+    lineinfile:
+       path: /etc/sysctl.conf
+       line: 'net.ipv4.tcp_keepalive_probes = 2'
+       insertbefore: EOF
+
+  - name: /etc/sysctl.conf
+    lineinfile:
+       path: /etc/sysctl.conf
+       line: 'net.ipv4.tcp_keepalive_intvl = 5'
+       insertbefore: EOF
+
+
+########################################################################################################################################
+######################################################################## Rolle back ####################################################
+########################################################################################################################################
+# ############################# Default Value /proc/sys/net/ipv4/tcp_keepalive_time
+
+#   - name: echo 7200 secound to all of tcp_keepalive_time
+#     shell: printf '7200' > /proc/sys/net/ipv4/tcp_keepalive_time
+
+# # ############################## Default Value /proc/sys/net/ipv4/tcp_keepalive_probes 
+
+#   - name: echo 1 secound to all of tcp_keepalive_probes
+#     shell: printf '9' > /proc/sys/net/ipv4/tcp_keepalive_probes
+
+# ############################## Default Value /proc/sys/net/ipv4/tcp_keepalive_intvl
+
+#   - name: echo 1 secound to all of tcp_keepalive_intvl
+#     shell: printf '75' > /proc/sys/net/ipv4/tcp_keepalive_intvl
+
+# # ############################## Remove Config from /etc/sysctl.conf
+
+#   - name: " remove from /etc/sysctl.conf "
+#     tags: example1
+#     lineinfile:
+#       path: /etc/sysctl.conf
+#       line: 'net.ipv4.tcp_keepalive_time = 10'
+#       state: absent
+#       backup: yes
+
+#   - name: " remove from /etc/sysctl.conf "
+#     tags: example1
+#     lineinfile:
+#       path: /etc/sysctl.conf
+#       line: 'net.ipv4.tcp_keepalive_intvl = 5'
+#       state: absent
+#       backup: yes
+
+#   - name: " remove from /etc/sysctl.conf  "
+#     tags: example1
+#     lineinfile:
+#       path: /etc/sysctl.conf
+#       line: 'net.ipv4.tcp_keepalive_probes = 2'
+#       state: absent
+#       backup: yes
+
+
+
+
+
+
+  - name: reload Srevice
+    command: sysctl -p
+  # - name: reload Srevice
+  #   command: reboot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ############################## Default Value /etc/sysctl.conf
+#   - name: Write keepalive in /etc/sysctl.conf
+#     shell: printf 'net.ipv4.tcp_keepalive_time = 1\n
+#       net.ipv4.tcp_keepalive_intvl = 1\n
+#       net.ipv4.tcp_tcp_keepalive_probes = 1\n' >> /etc/sysctl.conf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ############################# tcp_keepalive_probes 
+
+##################################################################################
+# ############################# Basic Command
+
+#   - name: echo 1 secound to all of tcp_keepalive_probes
+#     command: "echo 1 > /proc/sys/net/ipv4/tcp_keepalive_probes"
+  # - name: echo 1 secound to all of tcp_keepalive_intvl
+  #   command: "echo 1 > /proc/sys/net/ipv4/tcp_keepalive_intvl"
+
+##############################################################
+  # - name: /etc/sysctl.conf
+  #   lineinfile:
+  #      path: /etc/sysctl.conf
+  #      line: 'net.ipv4.tcp_keepalive_time = 1 '
+  #      insertbefore: EOF
+
+  # - name: /etc/sysctl.conf
+  #   lineinfile:
+  #      path: /etc/sysctl.conf
+  #      line: 'net.ipv4.tcp_keepalive_intvl = 1 '
+  #      insertbefore: EOF
+
+  # - name: /etc/sysctl.conf
+  #   lineinfile:
+  #      path: /etc/sysctl.conf
+  #      line: 'net.ipv4.tcp_keepalive_probes = 1 '
+  #      insertbefore: EOF
+
+
+#sudo ansible-playbook Decrease-Keepalive.yaml -i hosts 
+
+
+
+
+# ############################## /etc/sysctl.conf
+#   - name: Write keepalive in /etc/sysctl.conf
+#     shell: printf 'net.ipv4.tcp_keepalive_time = 1\n
+#       net.ipv4.tcp_keepalive_intvl = 1\n
+#       net.ipv4.tcp_tcp_keepalive_probes = 1\n' >> /etc/sysctl.conf
+
+
+
+# sudo ansible-playbook -Kk Decrease-Keepalive.yaml --private-key ../../privatekey/priv_ali_open_openssh  -i hosts 
