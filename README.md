@@ -484,6 +484,77 @@ od -c Filename.txt
     - head mytxt      ده خط اول رو نمایش میده
     - tail mytxt      ده خط اخر رو نمایش میده
 
+
+# Tmux
+  https://tmuxcheatsheet.com/
+    - tmux ls
+    - tmux attach -t database
+    - tmux new -s database
+    - 
+    - tmux rename-session -t 0 database
+    - Ctrl + b c                          New Session
+    - Ctrl + b ,                          Rename current window
+    - Ctrl + b n                          Next window
+    - Ctrl + b 0 ... 9                    Switch/select window by number
+    - Ctrl + b &                          Close current window
+    - Ctrl + b s                          show all sessions
+    - Ctrl + b w                          List windows
+    - Ctrl + b d                          deattach
+    -
+    - Ctrl + b {                          Move the current pane left
+    - Ctrl + b Spacebar                   Change Layouts
+    - :setw synchronize-panes             send command to all Screen
+    - 
+    - 
+    - 
+    - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Important Topic
 
 

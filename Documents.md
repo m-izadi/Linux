@@ -51,7 +51,6 @@ elif find **Block ID** from log (tac /var/log/modsec_audit.log | less) search he
     # tail -f /var/log/modsec_audit.log
     # sudo openresty -t
 
-911100
 
 # SSH Jump
  ssh -v -N script@192.168.178.36 -J script@185.13.228.101:2223
