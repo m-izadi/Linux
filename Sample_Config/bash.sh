@@ -160,3 +160,23 @@ latest_backup_name=$(ls $backup_path -trh1 | tail -1)                   Latest f
 latest_backup_full_path=$(readlink -f $latest_backup_name)              Full Path File
 
 readlink -f 1010324242346_iran_direction.osm
+
+############## Emoji ########
+# https://unicode.org/emoji/charts/emoji-list.html#1f600
+
+perl -CO -E 'say "\N{U+1F602}"'
+perl -CO -E 'say "\N{U+1F4A9}"'
+echo -n $'\U1F60D\n' 😍
+echo -n $'\U1FAE1\n' 🫡
+echo -n $'\U1F92C\n' 🤬
+echo -n $'\U1F4A9\n' 💩
+echo -n $'\U1F914\n' 🤔
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ ###################################
