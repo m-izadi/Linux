@@ -163,6 +163,7 @@ readlink -f 1010324242346_iran_direction.osm
 
 ############## Emoji ########
 # https://unicode.org/emoji/charts/emoji-list.html#1f600
+# https://apps.timwhitlock.info/emoji/tables/unicode
 
 perl -CO -E 'say "\N{U+1F602}"'
 perl -CO -E 'say "\N{U+1F4A9}"'
@@ -171,12 +172,27 @@ echo -n $'\U1FAE1\n' 🫡
 echo -n $'\U1F92C\n' 🤬
 echo -n $'\U1F4A9\n' 💩
 echo -n $'\U1F914\n' 🤔
- 
- 
- 
- 
- 
- 
- 
- 
+echo -n $'\U1F4A4\n' 💤
+echo -n $'\U1F44C\n' 👌
+echo -n $'\U2705\n'  ✅
+echo -n $'\U274C\n'  ❌
+echo -n $'\U2757\n'  ❗
+echo -n $'\U231B\n'  ⌛
+echo -n $'\U1F44D\n' 👍
+echo -n $'\U1F4A1\n' 💡
+echo -n $'\U1F4CC\n' 📌
+echo -n $'\U1F4E2\n' 📢
+echo -n $'\U1F514\n' 🔔
+echo -n $'\U1F527\n' 🔧
+echo -n $'\U1F528\n' 🔨
+echo -n $'\U1F527\U1F528 \n' 🔧🔨
+echo -n $'\U1F534\n' 🔴
+echo -n $'\U1F4C8\n' 📈
+echo -n $'\U1F50D\n' 🔍
+
+
+|| اگر قبلی نشد بعدی بشه
+; قبلی شدن و نشدنش مهم نیست و دستور بعدی رو اجرا میکند
+&& اگر دستور قبلی درست انجام شد دستور بعدی رو اجرا کن
+
  ###################################

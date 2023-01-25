@@ -14,7 +14,7 @@ mkdir ~/tmp/ ~/.node/
 # Basic Tools ( net-tools / vim / htop /curl /  )
 	echo ""
 	echo "Would you like to install Basic Tools? (Default No) (Y/n) "
-	read basic_tools
+	read -r basic_tools
 	basic_tools="${basic_tools^^}" #toUpperCase
 	if [ -z "$basic_tools" ]; then
 		basic_tools="N"
@@ -23,7 +23,7 @@ mkdir ~/tmp/ ~/.node/
 # ZSH
 	echo ""
 	echo "Would you like to install oh-my-zsh? (Default No) (Y/n) "
-	read zsh
+	read -r zsh
 	zsh="${zsh^^}" #toUpperCase
 	if [ -z "$zsh" ]; then
 		zsh="N"
@@ -32,7 +32,7 @@ mkdir ~/tmp/ ~/.node/
 # vlc
 	echo ""
 	echo "Would you like to install vlc? (Default No) (Y/n) "
-	read vlc
+	read -r vlc
 	vlc="${vlc^^}" #toUpperCase
 	if [ -z "$vlc" ]; then
 		vlc="N"
@@ -41,7 +41,7 @@ mkdir ~/tmp/ ~/.node/
 # tmux
 	echo ""
 	echo "Would you like to install tmux? (Default No) (Y/n) "
-	read tmux
+	read -r tmux
 	tmux="${tmux^^}" #toUpperCase
 	if [ -z "$tmux" ]; then
 		tmux="N"
@@ -50,7 +50,7 @@ mkdir ~/tmp/ ~/.node/
 # openvpn
 	echo ""
 	echo "Would you like to install openvpn? (Default No) (Y/n) "
-	read openvpn
+	read -r openvpn
 	openvpn="${openvpn^^}" #toUpperCase
 	if [ -z "$openvpn" ]; then
 		openvpn="N"
@@ -59,7 +59,7 @@ mkdir ~/tmp/ ~/.node/
 # keepass
 	echo ""
 	echo "Would you like to install keepass? (Default No) (Y/n) "
-	read keepass
+	read -r keepass
 	keepass="${keepass^^}" #toUpperCase
 	if [ -z "$keepass" ]; then
 		keepass="N"
@@ -68,7 +68,7 @@ mkdir ~/tmp/ ~/.node/
 # ranger
 	echo ""
 	echo "Would you like to install ranger? (Default No) (Y/n) "
-	read ranger
+	read -r ranger
 	ranger="${ranger^^}" #toUpperCase
 	if [ -z "$ranger" ]; then
 		ranger="N"
@@ -77,7 +77,7 @@ mkdir ~/tmp/ ~/.node/
 # Docker
 	echo ""
 	echo "Would you like to install docker ? (Default No) (Y/n) "
-	read docker
+	read -r docker
 	docker="${docker^^}" #toUpperCase
 	if [ -z "$docker" ]; then
 		docker="N"
@@ -86,7 +86,7 @@ mkdir ~/tmp/ ~/.node/
 # git
 	echo ""
 	echo "Would you like to install git? (Default No) (Y/n) "
-	read git
+	read -r git
 	git="${git^^}" #toUpperCase
 	if [ -z "$git" ] ; then
 		Git="N"
@@ -94,17 +94,17 @@ mkdir ~/tmp/ ~/.node/
 	if [ "$git" == "Y" ] ; then
 	    echo ""
 	    echo "Please enter your name (for git): "
-	    read git_name
+	    read -r git_name
 
 	    echo ""
 	    echo "Please enter your email (for git): "
-	    read git_email
+	    read -r git_email
 	fi
 
 # tomcat
 	echo ""
 	echo "Would you like to install tomcat? (Default No)(Y/n) "
-	read tomcat
+	read -r tomcat
 	tomcat="${tomcat^^}" #toUpperCase
 	if [ -z "$tomcat" ]; then
 		tomcat="N"
@@ -113,7 +113,7 @@ mkdir ~/tmp/ ~/.node/
 # nginx
 	echo ""
 	echo "Would you like to install nginx? (Default No) (Y/n) "
-	read nginx
+	read -r nginx
 	nginx="${nginx^^}" #toUpperCase
 	if [ -z "$nginx" ]; then
 		nginx="N"
@@ -122,7 +122,7 @@ mkdir ~/tmp/ ~/.node/
 # Mattermost
 	echo ""
 	echo "Would you like to install Mattermost? (Default No) (Y/n) "
-	read Mattermost
+	read -r Mattermost
 	Mattermost="${Mattermost^^}" #toUpperCase
 	if [ -z "$Mattermost" ]; then
 		Mattermost="N"
@@ -131,7 +131,7 @@ mkdir ~/tmp/ ~/.node/
 # slack
 	echo ""
 	echo "Would you like to install slack? (Default No) (Y/n) "
-	read slack
+	read -r slack
 	slack="${slack^^}" #toUpperCase
 	if [ -z "$slack" ]; then
 		slack="N"
@@ -140,7 +140,7 @@ mkdir ~/tmp/ ~/.node/
 # telegram_desktop
 	echo ""
 	echo "Would you like to install telegram_desktop? (Default No) (Y/n) "
-	read telegram_desktop
+	read -r telegram_desktop
 	telegram_desktop="${telegram_desktop^^}" #toUpperCase
 	if [ -z "$telegram_desktop" ]; then
 		telegram_desktop="N"
@@ -149,7 +149,7 @@ mkdir ~/tmp/ ~/.node/
 # sublimetext
 	echo ""
 	echo "Would you like to install sublimetext? (Default No) (Y/n) "
-	read sublimetext
+	read -r sublimetext
 	sublimetext="${sublimetext^^}" #toUpperCase
 	if [ -z "$sublimetext" ]; then
 		sublimetext="N"
@@ -158,7 +158,7 @@ mkdir ~/tmp/ ~/.node/
 # vscode
 	echo ""
 	echo "Would you like to install vscode? (Default No) (Y/n) "
-	read vscode
+	read -r vscode
 	vscode="${vscode^^}" #toUpperCase
 	if [ -z "$vscode" ] ; then
 		vscode="N"
