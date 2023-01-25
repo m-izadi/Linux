@@ -5,8 +5,8 @@ echo "Hello" > newfile.txt
 ## Write text in line 2 and owerite if not uniq
 echo "World" >> newfile.txt
 ##########
-read -p "what is your name:  " name
-echo salam $name
+read -r -p "what is your name:  " name
+echo salam "${name}"
 
 ############## leason 2
 echo -e home: " \033[32;99;7;102m\t  $HOME\033[0m"
@@ -30,14 +30,14 @@ echo Plz 1 second Wait
 sleep 1
 clear
 ls
-read -p "please enter a directory name:  " directory
+read -r -p "please enter a directory name:  " directory
 if [ -d "/Documents/Git/Linux_Script/Bash/Faranesh/$directory" ]; then
     echo Directory existed
 else 
     echo -e "Directori fogh vojod nadarad\nDo you want Create $directory ? (y/n)"
-    read answer
+    read -r answer
     if [ "$answer" == "y" ]; then
-        mkdir $directory
+        mkdir "$directory"
     else
         echo bye
         exit

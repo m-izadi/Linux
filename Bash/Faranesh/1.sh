@@ -23,7 +23,7 @@ clear
 # echo "How are you" >> newfile.txt
 
 
-read -p "what is your name:  " name
+read -r -p "what is your name:  " name
 echo salam $name
 ## or 
 # echo bego salam

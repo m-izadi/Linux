@@ -4,7 +4,7 @@ echo -e " \033[32;99;7;102m\tWelcome\033[0m"
 echo -e "\n"
 echo -e " be bazi marg khosh amadid "
 
-read -p "PLIZ enter name:  " name
+read -r -p "PLIZ enter name:  " name
 
 # if [ "$name" == "erfun" ]; then
 #     echo "khosh omadi $name"

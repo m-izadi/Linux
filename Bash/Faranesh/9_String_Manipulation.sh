@@ -9,9 +9,9 @@ sigmaTime(){
  }
 
 data(){
-    data_hour=`date +%H`
-    data_minuts=`date +%M`
-    sigma_date=`sigmaTime $data_hour $data_minuts`
+    data_hour=$(date +%H)
+    data_minuts=$(date +%M)
+    sigma_date=$(sigmaTime "$data_hour" "$data_minuts")
 }
 
 # echo `date +%H:%M`
@@ -23,4 +23,4 @@ data(){
 # link="https://cdna.p30download.ir/p30dl-software/Dont.Sleep.v8.81.x64_p30download.com.rar"
 
 data
-echo $sigma_date
+echo "$sigma_date"
