@@ -162,6 +162,8 @@ izadi@rt-staging-node3:/data/brick1/back/config-server/configs/ms-map-helm/stage
 
 
 
+# My ip
+    # curl https://ipv4.icanhazip.com/
 
 
 
