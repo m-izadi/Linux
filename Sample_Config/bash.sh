@@ -3,6 +3,8 @@
 LRED="\033[1;31m" # Light Red
 LGREEN="\033[1;32m" # Light Green
 NC='\033[0m' # No Color
+plain='\033[0m'
+
 echo -e " \033[33;99;7;102mERROR\033[0m" # Yellow
 echo -e " \033[32;99;7;102m\tWelcome\033[0m"
 
