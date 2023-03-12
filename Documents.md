@@ -4,7 +4,7 @@
     
     sudo docker save -o graphhopper:4.2.tar graphhopper
     sudo docker pull http://registry.local:5002/backend/java_run:11.0.11-jre-slim-buster
-    sudo docker image load -i java_run:11.0.11-jre-slim-buster.tar
+    sudo docker load -i java_run:11.0.11-jre-slim-buster.tar
     sudo docker network create gh
     sudo docker rm -f 475e710ccdbf 475e710ccdbf
     sudo docker top 4d40a4f86500
