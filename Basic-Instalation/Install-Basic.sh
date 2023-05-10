@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# ZSH / VLC / TMUX / OPENVPN KEEPASS RANGER DOCKER GIT TOMCAT  NGINX MATTERMOST  TELEGRAMDESKTOP SUBLIMETEXT SLACK VSCODE HTOP
 LRED="\033[1;31m" # Light Red 
 LGREEN="\033[1;32m" # Light Green
 NC='\033[0m' # No Color
@@ -10,6 +10,23 @@ fi
 # prevent root from creating ~/tmp/ by creating it ourself and cause permission problems
 # Make .node because in the later versions of npm, it's too stupid to make a folder anymore
 mkdir ~/tmp/ ~/.node/
+
+# Set Proxy
+	echo ""
+	echo "Would you like Set Proxy in Apt? (Default No) (Y/n) "
+	read -r apt_proxy
+	apt_proxy="${apt_proxy^^}" #toUpperCase
+	if [ -z "$apt_proxy" ]; then
+		apt_proxy="N"
+	fi
+	# if [ "$apt_proxy" == "Y" ] ; then
+	#     echo ""
+	# 	proxy=http://proxy.kavosh.org:808/
+	#     echo "Please enter your HttpProxy: "
+	#     read -r proxy
+
+	# fi
+
 
 # Basic Tools ( net-tools / vim / htop /curl /  )
 	echo ""
@@ -163,6 +180,16 @@ mkdir ~/tmp/ ~/.node/
 	if [ -z "$vscode" ] ; then
 		vscode="N"
 	fi
+
+	if [ "$basic_tools" == "Y" ];then
+
+		echo -e "\n\n${LGREEN}##############################################################################################"
+		echo -e "${LGREEN}##########################################  Set Proxy  #######################################"
+		echo -e "${LGREEN}##############################################################################################"
+	    
+		sudo echo 'Acquire::http::Proxy "http://proxy.kavosh.org:808/";' > /etc/apt/apt.conf.d/proxy.conf
+	fi
+
 
 echo -e "\n\n${LGREEN}##############################################################################################"
 echo -e "${LGREEN}######################################  Start Installation  ##################################"
