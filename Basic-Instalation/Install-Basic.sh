@@ -1,5 +1,5 @@
 #!/bin/bash
-# ZSH / VLC / TMUX / OPENVPN KEEPASS RANGER DOCKER GIT TOMCAT  NGINX MATTERMOST  TELEGRAMDESKTOP SUBLIMETEXT SLACK VSCODE HTOP
+# Zsh / Vlc / Tmux / OpenVpn Keepass Ranger Docker Git Tomcat  Nginx Mattermost  TelegramDesktop SublimeText Slack VScode htop
 LRED="\033[1;31m" # Light Red 
 LGREEN="\033[1;32m" # Light Green
 NC='\033[0m' # No Color
