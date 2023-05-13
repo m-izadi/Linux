@@ -13,6 +13,7 @@ fi
 # Make .node because in the later versions of npm, it's too stupid to make a folder anymore
 mkdir ~/tmp/ ~/.node/
 
+
 # Set Proxy
 	echo -e "\nWould you like Set Proxy in Apt? (Default No) (Y/n) "
 	read -r apt_proxy
