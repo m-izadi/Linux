@@ -247,8 +247,7 @@ fi
 
 if [ "$wget_proxy" == "Y" ];then
 
-	sudo touch /etc/apt/apt.conf.d/proxy.conf
-	sudo setfacl -Rm u:"$user":rw  /etc/apt/apt.conf.d/proxy.conf
+	sudo setfacl -Rm u:"$USER":rw  /etc/wgetrc
 	sudo echo -e "use_proxy=yes\nhttp_proxy=$proxy" >> /etc/wgetrc && echo -e "wget Proxy Set Successfully" || echo -e "\U1F534 ${RED}Your user does not have access to /etc/wgetrc \nPlease manually add proxy in /etc/wgetrc \nOR \nSet Permisson${NC}"
 fi
 
