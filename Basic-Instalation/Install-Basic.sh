@@ -13,21 +13,68 @@ fi
 # Make .node because in the later versions of npm, it's too stupid to make a folder anymore
 mkdir ~/tmp/ ~/.node/
 
-# Set Proxy
+# Set APT Proxy
 	echo -e "\nWould you like Set Proxy in Apt? (Default No) (Y/n) "
 	read -r apt_proxy
 	apt_proxy="${apt_proxy^^}" #toUpperCase
 	if [ -z "$apt_proxy" ]; then
 		apt_proxy="N"
 	fi
+
 	if [ "$apt_proxy" == "Y" ] ; then
 	    echo "Please enter your HttpProxy(proxy.kavosh.org?): "
 	    read -r proxy
-			proxy="${proxy^^}" #toUpperCase
+			# proxy="${proxy^^}" #toUpperCase
 			if [ -z "$proxy" ]; then
-				proxy=http://proxy.kavosh.org:808/
+				proxy=proxy.kavosh.org:808
 			fi
 	fi
+
+# Set WGET Proxy
+	echo -e "\nWould you like Set Proxy in wget? (Default No) (Y/n) "
+	read -r wget_proxy
+	wget_proxy="${wget_proxy^^}" #toUpperCase
+	if [ -z "$wget_proxy" ]; then
+		wget_proxy="N"
+	fi
+
+	if [ "$wget_proxy" == "Y" ] ; then
+	    echo "Please enter your HttpProxy(proxy.kavosh.org?): "
+	    read -r proxy
+			# proxy="${proxy^^}" #toUpperCase
+			if [ -z "$proxy" ]; then
+				proxy=proxy.kavosh.org:808
+			fi
+	fi
+
+# Set CURL Proxy
+	echo -e "\nWould you like Set Proxy in curl? (Default No) (Y/n) "
+	read -r curl_proxy
+	curl_proxy="${curl_proxy^^}" #toUpperCase
+	if [ -z "$curl_proxy" ]; then
+		curl_proxy="N"
+	fi
+	if [[ "$curl_proxy" == "Y" ]] ; then
+	    echo "Please enter your HttpProxy(proxy.kavosh.org?): "
+	    read -r curl_url_proxy
+			if [ -z "$curl_url_proxy" ]; then
+				curl_url_proxy=--proxy http://proxy.kavosh.org:808
+			fi
+	fi
+
+	# if [[ "$wget_proxy" == "Y" || "$apt_proxy" == "Y" || "$curl_proxy" == "Y" ]] ; then
+	#     echo "Please enter your HttpProxy(proxy.kavosh.org?): "
+	#     read -r proxy
+	# 		proxy="${proxy^^}" #toUpperCase
+	# 		if [ -z "$proxy" ]; then
+	# 			proxy=proxy.kavosh.org:808
+	# 		fi
+	# 	curl_proxy=  "\" --proxy http:/$proxy \""
+	# fi
+
+
+
+
 
 # Basic Tools ( net-tools / vim / htop /curl /  )
 	echo ""
@@ -195,7 +242,14 @@ echo -e "${GRN}##########################################  Set Proxy  ##########
 echo -e "${GRN}##############################################################################################"
 	sudo touch /etc/apt/apt.conf.d/proxy.conf
 	sudo setfacl -Rm u:"$user":rw  /etc/apt/apt.conf.d/proxy.conf
-	sudo echo -e "Acquire::http::Proxy \"$proxy\";" > /etc/apt/apt.conf.d/proxy.conf && echo -e Proxy Set Successfully || echo -e "\U1F534 ${RED}Your user does not have access to /etc/apt/apt.conf.d/proxy.conf \nPlease manually add proxy in /etc/apt/apt.conf.d/proxy.conf \nOR \nSet Permisson${NC}"
+	sudo echo -e "Acquire::http::Proxy \"http://$proxy/\";" > /etc/apt/apt.conf.d/proxy.conf && echo -e "apt Proxy Set Successfully" || echo -e "\U1F534 ${RED}Your user does not have access to /etc/apt/apt.conf.d/proxy.conf \nPlease manually add proxy in /etc/apt/apt.conf.d/proxy.conf \nOR \nSet Permisson${NC}"
+fi
+
+if [ "$wget_proxy" == "Y" ];then
+
+	sudo touch /etc/apt/apt.conf.d/proxy.conf
+	sudo setfacl -Rm u:"$user":rw  /etc/apt/apt.conf.d/proxy.conf
+	sudo echo -e "use_proxy=yes\nhttp_proxy=$proxy" >> /etc/wgetrc && echo -e "wget Proxy Set Successfully" || echo -e "\U1F534 ${RED}Your user does not have access to /etc/wgetrc \nPlease manually add proxy in /etc/wgetrc \nOR \nSet Permisson${NC}"
 fi
 
 echo -e "${GRN}#####################${NC} Tasks Started in : ${YLW}$(date "+%Y/%m/%d %H:%M") ${GRN}########################${NC}"
@@ -255,19 +309,19 @@ echo -e "\U231B ${GRN}######################################        Docker      
 		   gnupg \
 		   lsb-release
 		sudo mkdir -p /etc/apt/keyrings
-		curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+		curl -fsSL "$curl_url_proxy" https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 		echo \
 		  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
 		  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 		sudo chmod a+r /etc/apt/keyrings/docker.gpg
-		sudo apt-get update
+		sudo apt update
 		sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 	else
 		echo -e "\U1F4CC ${YLW}This step was skipped${NC}"
 	fi
 
 	# if [ "$docker" == "Y" ];then
-	#     curl -Sslf https://get.docker.com/ | sudo bash
+	#     curl -Sslf "$curl_url_proxy" https://get.docker.com/ | sudo bash
 	# fi
 echo -e "\U231B ${GRN}######################################         Git          ##################################${NC}"
 	if [ "$Git" == "Y" ];then
@@ -281,7 +335,7 @@ echo -e "\U231B ${GRN}######################################         Git        
 echo -e "\U231B ${GRN}######################################         zsh          ##################################${NC}"
     if [ "$zsh" == "Y" ];then
             sudo apt install zsh -y
-            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            sh -c "$(curl -fsSL "$curl_url_proxy" https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh )"
             # default shell
             sudo chsh -s /usr/bin/zsh
             chsh -s /usr/bin/zsh
@@ -305,7 +359,7 @@ echo -e "\U231B ${GRN}######################################        nginx       
 	fi
 echo -e "\U231B ${GRN}######################################      Mattermost      ##################################${NC}"
 	if [ "$Mattermost" == "Y" ];then
-	    curl -o- https://deb.packages.mattermost.com/setup-repo.sh | sudo bash
+	    curl -o- "$curl_url_proxy" https://deb.packages.mattermost.com/setup-repo.sh | sudo bash
 	    sudo apt install mattermost-desktop -y
 	    sudo apt upgrade mattermost-desktop -y
 	else
