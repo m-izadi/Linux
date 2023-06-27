@@ -1,0 +1,9 @@
+stages:
+  - restores
+  - cicd
+  - mbtiles
+
+include:
+  - local: .gitlab/restores.yml
+  - local: .gitlab/cicd.yml
+  - local: .gitlab/mbtiles.yml

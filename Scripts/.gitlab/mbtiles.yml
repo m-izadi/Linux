@@ -1,0 +1,9 @@
+mbtiles_directory:
+  stage: mbtiles
+  tags:
+    - rt-deliver
+  script: 
+    - rsync -arPe "ssh -p 5566 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" mbtiles/st_mbtiles-copy.sh dev@172.16.178.33:/srv/scripts/
+  only: 
+    changes:
+      - mbtiles/*

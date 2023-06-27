@@ -1,0 +1,9 @@
+restores_directory:
+  stage: restores
+  tags:
+    - rt-deliver
+  script: 
+    - rsync -arPe "ssh -p 5566 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" restores/ dev@172.16.179.1:/srv/scripts/
+  only: 
+    changes:
+      - restores/*

@@ -1,0 +1,9 @@
+cicd_directory:
+  stage: cicd
+  tags:
+    - rt-deliver
+  script: 
+    - rsync -arPe "ssh -p 2223 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" ci-cd/* support@185.13.228.101:/srv/scripts/ci
+  only: 
+    changes:
+      - ci-cd/*
