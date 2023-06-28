@@ -126,7 +126,7 @@ sed -r 's/^[a-d]{3}/r/' test.txt
 # 1bcdefghylmn
 # absalam ab
 
-############## Time & Date ##############
+############## Time & Date ############## Function
 mina(){
     date +%H:%M
     echo "********************"
@@ -163,7 +163,165 @@ latest_backup_full_path=$(readlink -f $latest_backup_name)              Full Pat
 
 readlink -f 1010324242346_iran_direction.osm
 
-############## Emoji ########
+############## read ########
+
+read -p “Please type your username” username
+
+read -s -p “Please type your password” $password                                # input silent
+
+read -t 5 -rp  "Would you like Set Proxy? (Default No) (Y/n) " proxy            # Answer in 5 seconds
+
+
+############## Select ##############  The select mechanism allows you to create a simple menu system
+#!/bin/bash
+# A simple menu system
+names='Kyle Cartman Stan Quit'
+PS3='Select character: '
+select name in $names
+do
+if [ $name == 'Quit' ]
+then
+break
+fi
+echo Hello $name
+done
+echo Bye
+
+############## Function ##############
+
+#!/bin/bash
+# Basic function
+print_something () {
+echo Hello I am a function
+}
+print_something
+print_something
+
+############## tput ############## Here is an example printing a message in the center of the screen.
+#https://ryanstutorials.net/bash-scripting-tutorial/bash-user-interface.php
+#!/bin/bash
+# Print message in center of terminal
+cols=$( tput cols )
+rows=$( tput lines )
+message=$@
+input_length=${#message}
+half_input_length=$(( $input_length / 2 ))
+middle_row=$(( $rows / 2 ))
+middle_col=$(( ($cols / 2) - $half_input_length ))
+tput clear
+tput cup $middle_row $middle_col
+tput bold
+echo $@
+tput sgr0
+tput cup $( tput lines ) 0
+
+############## Multi Select ##############
+#!/bin/bash
+
+# customize with your own.
+options=("AAA" "BBB" "CCC" "DDD")
+
+menu() {
+    echo "Avaliable options:"
+    for i in ${!options[@]}; do 
+        printf "%3d%s) %s\n" $((i+1)) "${choices[i]:- }" "${options[i]}"
+    done
+    if [[ "$msg" ]]; then echo "$msg"; fi
+}
+
+prompt="Check an option (again to uncheck, ENTER when done): "
+while menu && read -rp "$prompt" num && [[ "$num" ]]; do
+    [[ "$num" != *[![:digit:]]* ]] &&
+    (( num > 0 && num <= ${#options[@]} )) ||
+    { msg="Invalid option: $num"; continue; }
+    ((num--)); msg="${options[num]} was ${choices[num]:+un}checked"
+    [[ "${choices[num]}" ]] && choices[num]="" || choices[num]="+"
+done
+
+printf "You selected"; msg=" nothing"
+for i in ${!options[@]}; do 
+    [[ "${choices[i]}" ]] && { printf " %s" "${options[i]}"; msg=""; }
+done
+echo "$msg"
+
+############## Multi select ##############
+
+!/bin/bash
+#title:         menu.sh
+#description:   Menu which allows multiple items to be selected
+#author:        Nathan Davieau
+#               Based on script from MestreLion
+#created:       May 19 2016
+#updated:       N/A
+#version:       1.0
+#usage:         ./menu.sh
+#==============================================================================
+
+#Menu options
+options[0]="AAA"
+options[1]="BBB"
+options[2]="CCC"
+options[3]="DDD"
+options[4]="EEE"
+
+#Actions to take based on selection
+function ACTIONS {
+    if [[ ${choices[0]} ]]; then
+        #Option 1 selected
+        echo "Option 1 selected"
+    fi
+    if [[ ${choices[1]} ]]; then
+        #Option 2 selected
+        echo "Option 2 selected"
+    fi
+    if [[ ${choices[2]} ]]; then
+        #Option 3 selected
+        echo "Option 3 selected"
+    fi
+    if [[ ${choices[3]} ]]; then
+        #Option 4 selected
+        echo "Option 4 selected"
+    fi
+    if [[ ${choices[4]} ]]; then
+        #Option 5 selected
+        echo "Option 5 selected"
+    fi
+}
+
+#Variables
+ERROR=" "
+
+#Clear screen for menu
+clear
+
+#Menu function
+function MENU {
+    echo "Menu Options"
+    for NUM in ${!options[@]}; do
+        echo "[""${choices[NUM]:- }""]" $(( NUM+1 ))") ${options[NUM]}"
+    done
+    echo "$ERROR"
+}
+
+#Menu loop
+while MENU && read -e -p "Select the desired options using their number (again to uncheck, ENTER when done): " -n1 SELECTION && [[ -n "$SELECTION" ]]; do
+    clear
+    if [[ "$SELECTION" == *[[:digit:]]* && $SELECTION -ge 1 && $SELECTION -le ${#options[@]} ]]; then
+        (( SELECTION-- ))
+        if [[ "${choices[SELECTION]}" == "+" ]]; then
+            choices[SELECTION]=""
+        else
+            choices[SELECTION]="+"
+        fi
+            ERROR=" "
+    else
+        ERROR="Invalid option: $SELECTION"
+    fi
+done
+
+ACTIONS
+
+############## Emoji ##############
 # https://unicode.org/emoji/charts/emoji-list.html#1f600
 # https://apps.timwhitlock.info/emoji/tables/unicode
 
