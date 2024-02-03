@@ -25,7 +25,7 @@ for l in $(cat scan-dfhpvs); do grep -v $l result >  result2; cat result2 > resu
 hasan=$(tail result)
 ali=''
 while [ true ]
-do      echo "Enter the Partishion number"
+do      echo "Enter the Partition number"
 read number
 if [ -z ${number} ]
 then
@@ -98,4 +98,3 @@ rm -rf scan-fdisk
 rm -rf result
 rm -rf result2
 echo -e "\e[32mDone\e[0m"
-
