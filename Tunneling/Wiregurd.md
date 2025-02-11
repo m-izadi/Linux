@@ -17,7 +17,7 @@ g2Lv7pJbxfVkmenuqAe/aV1VTUwQhlRyxCDO7AvGE3o=
 
 ## Install Wireguard in Ubuntu
 
-    apt update && apt install wireguard -y
+    sudo apt update && sudo apt install wireguard -y
 
     cd /etc/wireguard
 

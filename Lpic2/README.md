@@ -1,0 +1,3 @@
+virtual memory status
+
+    vmstat
