@@ -42,7 +42,7 @@ Note: Paste Ubuntu Publickey To PFsense Peers
 Note: Paste Ubuntu privatekey To wg0.conf PrivateKey Section
 
 
-vim /etc/wireguard/wg0.conf
+vim /etc/wireguard/wg1.conf
 
     [Interface]
     # Name = laptop.example-vpn.dev
