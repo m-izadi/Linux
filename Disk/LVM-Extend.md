@@ -116,3 +116,25 @@ df -mh
 
 
 
+
+####################################
+
+parted
+print
+resizepart
+
+print
+quit
+
+pvresize
+pvresize /dev/sda2
+
+lvdisplay
+lvextend -r -l +100%FREE /dev/ubuntu-vg/lv-1
+
+
+
+
+
+
+

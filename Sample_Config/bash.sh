@@ -58,16 +58,6 @@ done
 
 
 
-
-
-
-
-
-
-
-
-
-
 ########################################
 ssh $ssh_to_local -o ConnectTimeout=15 rsync -avzh $src_osm_path/$osm_name $dst_osm_path/$osm_name
 ssh $ssh_to_node1 -o ConnectTimeout=15 rsync -avzh --delete-after  $src_osm_path/$osm_name $backend_car_path/$osm_name
